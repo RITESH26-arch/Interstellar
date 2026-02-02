@@ -28,7 +28,7 @@ def register_user(name, email, password, location):
         return {"status":"fail","msg":str(e)}
     finally:
         conn.close()
-
+# login 
         
 def login_user(email, password):
     conn = get_connection()
