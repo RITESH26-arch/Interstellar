@@ -36,7 +36,7 @@ async function loginUser() {
 
     if (response.status === 200) {
       alert("Login successful 🚀");
-      // window.location.href = "dashboard.html";
+      window.location.href = "Home.html";
     } else {
       alert(data.message || "Invalid credentials");
     }
