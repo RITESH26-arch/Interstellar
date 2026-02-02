@@ -9,22 +9,26 @@ def validate_email(email):
 def hash_password(password):
     return hashlib.sha256(password.encode()).hexdigest()
 
-def register_user(name, email, password,location):
+def register_user(name, email, password, location):
     if not validate_email(email):
         return {"status":"fail","msg":"Invalid Email"}
     if len(password) < 6:
         return {"status":"fail","msg":"Weak Password"}
+
     conn = get_connection()
     cur = conn.cursor()
     try:
-        cur.execute("INSERT INTO users(name,email,password,location) VALUES(%s,%s,%s,%s)",
-        (name,email,hash_password(password)))
+        cur.execute(
+            "INSERT INTO users(username,email,password,location) VALUES(%s,%s,%s,%s)",
+            (name, email, hash_password(password), location)
+        )
         conn.commit()
         return {"status":"success"}
-    except:
-        return {"status":"fail","msg":"Email exists"}
+    except Exception as e:
+        return {"status":"fail","msg":str(e)}
     finally:
         conn.close()
+
         
 def login_user(email, password):
     conn = get_connection()

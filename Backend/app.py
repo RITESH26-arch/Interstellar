@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from login_logic import register_user, login_user, sessions
-from Backend.db_config import get_connection
+from db_config import get_connection
 
 app = Flask(__name__)
 CORS(app)
@@ -12,43 +12,24 @@ CORS(app)
 @app.route("/signup", methods=["POST"])
 def signup():
     data = request.json
-    username = data.get("username")
-    email = data.get("email")
-    password = data.get("password")
-    location = data.get("location")
-
-  data = request.json
-    msg = register_user(username,email,password,location)
-    if user:
-        return jsonify({
-            "success": True,
-            "message": "Sign-in successful",
-            "user": user
-        })
-    else:
-        return jsonify({
-            "success": False,
-            "message": "Invalid email or password"
-        }), 401
+    msg = register_user( 
+        data.get("email"),
+        data.get("email"),
+        data.get("password"),
+        data.get("location")
+    )
+    return jsonify(msg)
 
 # -------------------------
 # LOGIN API
 # -------------------------
 @app.route("/login", methods=["POST"])
 def login():
-   data = request.json
+    data = request.json
+    email = data.get("email")
+    password = data.get("password")
     result = login_user(email,password)
-    if user:
-        return jsonify({
-            "success": True,
-            "message": "Login successful",
-            "user": user
-        })
-    else:
-        return jsonify({
-            "success": False,
-            "message": "Invalid email or password"
-        }), 401
+    return jsonify(result)
 
 # -------------------------
 # SERVER RUN
