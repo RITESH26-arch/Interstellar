@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body style="margin:0; overflow-x:hidden;">
+
+    <div class="stars"></div>
+<div class="shooting-stars">
+  <span></span>
+  <span></span>
+</div>   
+
+ <!-- Name Of The Website -->
+  <div>
+        <h1 style="text-align: center;
+                 color: white;
+                    ">Interstellar
+        </h1>
+</div>
+  
+
+   <header style="position: sticky;
+                  top: 0;
+                  width: 100%;
+                  background-color: #0B0D10;
+                  border-bottom: 1px solid #1E2228;
+                  z-index: 1000;
+  ">
+  
+    <div  style="
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 16px 40px;
+    ">
+
+    <div style="color: white; 
+                font-size: 18px;
+                font-weight: 600;
+    ">Explore The Space
+    </div>
+
+    <div
+      style="
+        display: flex;
+        gap: 36px;
+        align-items: center;
+      "
+    >
+
+    <a href="home.html" style="color:#B6BCC6; 
+                                text-decoration:none;
+                                ">Home</a>
+
+      <a href="Events.html" style="color:#B6BCC6; 
+                                    text-decoration:none;
+                                    ">Events</a>
+
+      <a href="Predictions.html" style="color:#B6BCC6;
+                                        text-decoration:none;
+                                        ">Predictions</a>
+
+      <a href="Gallery.html" style="color:#B6BCC6; 
+                                    text-decoration:none;
+                                    ">Pictures</a>
+
+      <a href="Alerts.html" style="color:#B6BCC6;
+                                    text-decoration:none;
+                                    ">Alerts</a>
+
+      <a href="AboutUs.html" style="color:#B6BCC6; 
+                                    text-decoration:none;
+                                    ">About</a>
+
+    <!-- For Login Or SIGN-UP -->
+    <a
+      href="index.html"
+      style="
+        padding: 8px 16px;
+        border-radius: 8px;
+        background-color: #FF2D6F;
+        color: white;
+        text-decoration: none;
+        font-size: 14px;
+      "
+    >
+      Grant Access
+    </a>
+
+     </div>
+
+    </div>
+
+  </header>
+
+  <div>
+        <h2 style="text-align: center;
+                 color: white;
+                    ">Witness the Universe Before It Happens. 
+        </h2>
+</div>
+<br>>
+
+<div></div>
+
+
+<!-- Events Images And Text-->
+
+<div style="
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  margin:40px 80px;
+  border-bottom: 1px solid #1E2228;
+
+">
+
+<!-- Images Of The Events -->
+
+<div style="
+  display:flex;
+  flex-wrap:wrap;
+  width:65%;
+  gap: 20px;
+">
+
+<!-- 1st ==> Image of Meteor Shower-->
+
+<div id="MeteorShower" style="
+  width:270px;
+  height:330px;
+  
+  overflow:hidden;
+  color:white;
+  cursor: pointer;
+  transition: 0.3s ease;
+"
+onmouseover="this.style.transform='translateY(-6px)'"
+onmouseout="this.style.transform='translateY(0)'
+">
+  <a href="Events.html" style="text-decoration: none;">
+  <img src="/Images/Events-images/meteor-shower-artwork.webp" style="
+  border: 1px solid #7A828E;
+  border-radius: 18px;
+  display: block;
+  margin-top: 6%;
+  margin: 0 auto;
+  width: 95%;
+  height: 180px;
+  object-fit: cover;
+  transition: 0.3s ease;
+">
+  </a>
+
+  <div style="padding:14px;">
+
+    <div style="
+      font-size:18px;
+      font-weight:600;
+      margin-bottom:8px;
+      text-decoration: underline;
+    ">
+      Quadrantid meteor shower
+    </div>
+
+    <div style="
+      font-size:13px;
+      color:#B6BCC6;
+      line-height:1.4;
+    ">
+      Peaks on 4 January, with up to 120 meteors per hour, though moonlight may reduce visibility due to the full Moon on that night
+    </div>
+
+  </div>
+</div>
+
+<!-- 2nd ==> Image of Jupiter at opposition -->
+
+<div id="BloodMoon" style="
+  width:270px;
+  height:330px;
+  
+  overflow:hidden;
+  color:white;
+  cursor: pointer;
+  transition: 0.3s ease;
+"
+onmouseover="this.style.transform='translateY(-6px)'"
+onmouseout="this.style.transform='translateY(0)'
+">
+  <a href="Events.html" style="text-decoration: none;">
+  <img src="/Images/Events-images/Jupiter.webp" style="
+  border: 1px solid #7A828E;
+  border-radius: 18px;
+  display: block;
+  margin-top: 6%;
+  margin: 0 auto;
+  width: 95%;
+  height: 180px;
+  object-fit: cover;
+  transition: 0.3s ease;
+">
+  </a>
+
+  <div style="padding:14px;">
+
+    <div style="
+      font-size:18px;
+      font-weight:600;
+      margin-bottom:8px;
+      text-decoration: underline;
+    ">
+      Jupiter at opposition
+    </div>
+
+    <div style="
+      font-size:13px;
+      color:#B6BCC6;
+      line-height:1.4;
+    ">
+      On 10 January, Jupiter will be at its brightest and visible all night, making it an ideal time for observation.
+    </div>
+
+  </div>
+</div>
+
+
+<!-- 3rd ==> Artemis 2 Launch -->
+
+<div id="AuroraBorealis" style="
+  width:270px;
+  height:330px;
+  
+  overflow:hidden;
+  color:white;
+  cursor: pointer;
+  transition: 0.3s ease;
+"
+onmouseover="this.style.transform='translateY(-6px)'"
+onmouseout="this.style.transform='translateY(0)'
+">
+  <a href="Events.html" style="text-decoration: none;">
+  <img src="/Images/Events-images/Artemis2.webp" style="
+  border: 1px solid #7A828E;
+  border-radius: 18px;
+  display: block;
+  margin-top: 6%;
+  margin: 0 auto;
+  width: 95%;
+  height: 180px;
+  object-fit: cover;
+  transition: 0.3s ease;
+">
+  </a>
+
+  <div style="padding:14px;">
+
+    <div style="
+      font-size:18px;
+      font-weight:600;
+      margin-bottom:8px;
+      text-decoration: underline;
+    ">
+      Artemis 2 launch
+    </div>
+
+    <div style="
+      font-size:13px;
+      color:#B6BCC6;
+      line-height:1.4;
+    ">
+      Scheduled between February and April 2026, this crewed mission will take astronauts beyond the Moon, marking the farthest human spaceflight in history.
+    </div>
+  
+  </div>
+</div>
+
+
+<!-- 4th ==> Image of Orion Nebula (M42) -->
+
+<div id="Orion-Nebula" style="
+  width:270px;
+  height:330px;
+  
+  overflow:hidden;
+  color:white;
+  cursor: pointer;
+  transition: 0.3s ease;
+"
+onmouseover="this.style.transform='translateY(-6px)'"
+onmouseout="this.style.transform='translateY(0)'
+">
+  <a href="Events.html" style="text-decoration: none;">
+  <img src="/Images/Events-images/OrionNebula-M42.webp" style="
+  border: 1px solid #7A828E;
+  border-radius: 18px;
+  display: block;
+  margin-top: 6%;
+  margin: 0 auto;
+  width: 95%;
+  height: 180px;
+  object-fit: cover;
+  transition: 0.3s ease;
+">
+  </a>
+
+  <div style="padding:14px;">
+
+    <div style="
+      font-size:18px;
+      font-weight:600;
+      margin-bottom:8px;
+      text-decoration: underline;
+    ">
+      Orion Nebula (M42)
+    </div>
+
+    <div style="
+      font-size:13px;
+      color:#B6BCC6;
+      line-height:1.4;
+    ">
+      Though not specifically highlighted for November 2025 in the data, this famous stellar nursery is a prime target in the winter sky and will be visible in late November from the Northern Hemisphere
+    </div>
+  
+  </div>
+</div>
+
+<!-- 5th ==> Image of Parade of planets -->
+
+<div id="Parade-Planets" style="
+  width:270px;
+  height:330px;
+  
+  overflow:hidden;
+  color:white;
+  cursor: pointer;
+  transition: 0.3s ease;
+"
+onmouseover="this.style.transform='translateY(-6px)'"
+onmouseout="this.style.transform='translateY(0)'
+">
+  <a href="Events.html" style="text-decoration: none;">
+  <img src="/Images/Events-images/Planatery-Alignnment.webp" style="
+  border: 1px solid #7A828E;
+  border-radius: 18px;
+  display: block;
+  margin-top: 6%;
+  margin: 0 auto;
+  width: 95%;
+  height: 180px;
+  object-fit: cover;
+  transition: 0.3s ease;
+">
+  </a>
+
+  <div style="padding:14px;">
+
+    <div style="
+      font-size:18px;
+      font-weight:600;
+      margin-bottom:8px;
+      text-decoration: underline;
+    ">
+      Parade of planets
+    </div>
+
+    <div style="
+      font-size:13px;
+      color:#B6BCC6;
+      line-height:1.4;
+    ">
+      SLate February features six planets—Mercury, Venus, Saturn, Jupiter, Uranus, and Neptune—visible in a line across the sky, though Neptune and Uranus require telescopes .
+    </div>
+  </div>
+</div>
+
+
+
+<!-- 6th ==> Total Lunar Eclipse -->
+
+
+<div id="TotalLunarEclipsen" style="
+  width:270px;
+  height:330px;
+  
+  overflow:hidden;
+  color:white;
+  cursor: pointer;
+  transition: 0.3s ease;
+"
+onmouseover="this.style.transform='translateY(-6px)'"
+onmouseout="this.style.transform='translateY(0)'
+">
+  <a href="Events.html" style="text-decoration: none;">
+  <img src="/Images/Events-images/TotalLunarEclipse.webp" style="
+  border: 1px solid #7A828E;
+  border-radius: 18px;
+  display: block;
+  margin-top: 6%;
+  margin: 0 auto;
+  width: 95%;
+  height: 180px;
+  object-fit: cover;
+  transition: 0.3s ease;
+">
+  </a>
+
+  <div style="padding:14px;">
+
+    <div style="
+      font-size:18px;
+      font-weight:600;
+      margin-bottom:8px;
+      text-decoration: underline;
+    ">
+      Total Lunar Eclipse
+    </div>
+
+    <div style="
+      font-size:13px;
+      color:#B6BCC6;
+      line-height:1.4;
+    ">
+      Total Lunar Eclipse on March 3, 2026  This event, often called a "Blood Moon," is the only total lunar eclipse of 2026 and the last one until 2028.
+    </div>
+
+  </div>
+</div>
+
+</div>
+
+<!-- Text On The Right Side WHY INTERSTALLER -->
+
+
+<div style="
+  width:30%;
+  color:white;
+  ">
+
+  <div style="
+  font-size:30px;
+  letter-spacing:3px;
+  font-weight: 800;
+  color:#7A828E;
+  margin-bottom:6px;
+  ">
+  WHY INTERSTELLAR
+  </div>
+
+
+  <div style="
+  font-size:22px;
+  font-weight:600;
+  color:white;
+">
+
+</p>
+  
+</div><p style="color:#B6BCC6; font-size:20px; line-height:1.5;">
+For thousands of years, humans have looked to the sky for answers—
+to mark time, predict eclipses, and understand the rhythms of the universe.
+What once required patience and observation can now be achieved through science, data, and computation.
+</p>
+
+<p style="color:#B6BCC6; font-size:20px; line-height:1.5;">
+Every celestial event—whether a solar eclipse, meteor shower, or planetary alignment—follows precise cosmic laws.
+Interstellar deciphers these patterns, transforming complex astronomical calculations into accurate and accessible predictions.
+</p>
+
+<p style="color:#B6BCC6; font-size:20px; line-height:1.5;">
+By blending ancient curiosity with modern technology, Interstellar helps you know what's happening in the sky,
+when it will happen, and why it matters—so you never miss a moment written in the stars.
+
+
+</div>
+</div>
+</div>
+
+<!-- MAIN IMAGE SECTION -->
+<div style="
+  position: relative;
+  height: 55vh;
+  width: 100%;
+  background-image: url('Images/Space-Images/StartingImage.webp');
+  background-size: cover;
+  background-position: center;
+  border-bottom: 1px solid #1E2228;
+  overflow: hidden;
+">
+
+  <!-- Dark Gradient Overlay -->
+  <div style="
+    position:absolute;
+    inset:0;
+    background: linear-gradient(
+      to right,
+      rgba(0,0,0,0.85),
+      rgba(0,0,0,0.45),
+      rgba(0,0,0,0.1)
+    );
+  "></div>
+
+  <!-- CONTENT WRAPPER -->
+  <div style="
+    position:relative;
+    z-index:2;
+    height:100%;
+    display:flex;
+    align-items:center;
+  ">
+
+    <!-- TEXT BLOCK -->
+    <div style="
+      max-width:520px;
+      margin-left:80px;
+      color:white;
+    ">
+
+      <h1 style="
+        font-size:46px;
+        font-weight:700;
+        line-height:1.2;
+        margin-bottom:14px;
+      ">
+        INTERSTELLAR IMAGES
+      </h1>
+
+      <p style="
+        font-size:16px;
+        font-weight:300;
+        color:#B6BCC6;
+        line-height:1.6;
+        margin-bottom:22px;
+      ">
+        Stay ahead of rare cosmic events — from meteor showers
+        to auroras — powered by science and prediction.
+    </p>
+
+    </div>
+  </div>
+</div>
+
+  
+<!--Images of the celesteial body -->
+<div style="
+  width:100%;
+  padding:80px 0;
+  border-bottom:1px solid #1E2228;
+">
+
+  <div style="
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:80px;
+    max-width:1200px;
+    margin:0 auto;
+    padding:0 40px;
+  ">
+
+    <!-- Image -->
+    <div style="flex:1;">
+      <a href="Images.html" style="text-decoration: none;">
+      <img src="Images/Space-Images/Aurora-Borealis.webp"
+        style="
+          width:100%;
+          max-width:500px;
+          height:330px;
+          border-radius:18px;
+          object-fit:cover;
+          transition:0.3s ease;
+        "
+        onmouseover="this.style.transform='translateY(-6px)'"
+        onmouseout="this.style.transform='translateY(0)'
+        ">
+      </a>
+    </div>
+
+    <!-- Text -->
+    <div style="flex:1;">
+
+      <div style="
+        font-size:22px;
+        letter-spacing:3px;
+        font-weight:400;
+        color:#B6BCC6;
+        margin-bottom:16px;
+      ">
+        Aurora Borealis
+      </div>
+
+      <p style="
+        color:#7A828E;
+        font-size:16px;
+        line-height:1.7;
+        max-width:520px;
+      ">
+        Aurora Borealis, also known as the Northern Lights, is a breathtaking natural
+        light display seen in polar regions. It occurs when charged particles from
+        the Sun collide with Earth's atmosphere, creating glowing waves of green,
+        purple, and blue light.
+      </p>
+
+    </div>
+
+  </div>
+</div>
+
+
+
+<!--2nd image of Aurora Australis -->
+
+<div style="
+  width:100%;
+  padding:80px 0;
+  border-bottom:1px solid #1E2228;
+">
+
+  <div style="
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:80px;
+    max-width:1200px;
+    margin:0 auto;
+    padding:0 40px;
+    flex-direction:row-reverse;
+  ">
+
+    <!-- Image -->
+    <div style="flex:1;">
+      <a href="Images.html" style="text-decoration: none;">
+      <img src="Images/Space-Images/Aurora-Australis.webp"
+        style="
+          width:100%;
+          max-width:500px;
+          height:330px;
+          border-radius:18px;
+          object-fit:cover;
+          transition:0.3s ease;
+        "
+        onmouseover="this.style.transform='translateY(-6px)'"
+        onmouseout="this.style.transform='translateY(0)'"
+      >
+    </a>
+    </div>
+
+    <!-- Text -->
+    <div style="flex:1;">
+
+      <div style="
+        font-size:22px;
+        letter-spacing:3px;
+        font-weight:400;
+        color:#B6BCC6;
+        margin-bottom:16px;
+      ">
+        Aurora Australis
+      </div>
+
+      <p style="
+        color:#7A828E;
+        font-size:16px;
+        line-height:1.7;
+        max-width:520px;
+      ">
+        Aurora Australis, also known as the Southern Lights, is a stunning natural light display visible in the southern
+        polar skies. It forms when charged solar particles interact with Earth's magnetic field near Antarctica.
+        The sky glows with soft waves of pink, red, green, and violet light, moving like cosmic curtains.
+        Unlike the Northern Lights, it is more remote and rarely seen, making it even more mysterious.
+      </p>
+
+    </div>
+
+  </div>
+</div>
+
+
+
+<!-- FOOTER -->
+
+
+<footer style="
+ 
+  border-top:1px solid #1E2228;
+  padding:50px 80px;
+  color:#B6BCC6;
+">
+
+  <!-- TOP PART -->
+  <div style="
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:40px;
+  ">
+
+    <!-- BRAND -->
+    <div style="max-width:300px;">
+      <h2 style="
+        color:white;
+        font-size:22px;
+        letter-spacing:2px;
+        margin-bottom:14px;
+      ">
+        INTERSTELLAR
+      </h2>
+
+      <p style="
+        font-size:14px;
+        line-height:1.6;
+        color:#7A828E;
+      ">
+        Predicting rare cosmic events and uncovering
+        the universe through science, data, and curiosity.
+      </p>
+    </div>
+
+    <!-- LINKS -->
+    <div>
+      <h4 style="color:white; margin-bottom:12px;">Explore</h4>
+      <a href="home.html" style="display:block; color:#7A828E; margin-bottom:8px; text-decoration:none;">Home</a>
+      <a href="Events.html" style="display:block; color:#7A828E; margin-bottom:8px; text-decoration:none;">Events</a>
+      <a href="#" style="display:block; color:#7A828E; margin-bottom:8px; text-decoration:none;">Predictions</a>
+      <a href="Images.html" style="display:block; color:#7A828E; text-decoration:none;">Images</a>
+    </div>
+
+    <!-- INFO -->
+    <div>
+      <h4 style="color:white; margin-bottom:12px;">Information</h4>
+      <a href="#" style="display:block; color:#7A828E; margin-bottom:8px; text-decoration:none;">About Us</a>
+      <a href="#" style="display:block; color:#7A828E; margin-bottom:8px; text-decoration:none;">Alerts</a>
+      <a href="#" style="display:block; color:#7A828E; text-decoration:none;">Contact</a>
+    </div>
+
+    <!-- CTA -->
+    <div>
+      <h4 style="color:white; margin-bottom:12px;">Stay Updated</h4>
+      <button style="
+        background:#FF2D6F;
+        color:white;
+        border:none;
+        padding:12px 22px;
+        border-radius:10px;
+        cursor:pointer;
+        font-size:14px;
+      ">
+        Grant Access
+      </button>
+    </div>
+
+  </div>
+
+  <!-- BOTTOM BAR -->
+  <div style="
+    margin-top:40px;
+    padding-top:20px;
+    border-top:1px solid #1E2228;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    font-size:13px;
+    color:#7A828E;
+  ">
+
+    <div>
+      © 2026 Interstellar. All rights reserved.
+    </div>
+
+    <div>
+      Built with ❤️ for the universe
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+
+
+
+
+
+ <!--
+Deep Space Black: #0B0D10
+
+Pure Black (sections / footer): #000000
+
+Soft Dark Grey (cards): #14171C
+
+
+--------------------------------------
+
+Primary Text (Headings): #FFFFFF
+
+Secondary Text: #B6BCC6
+
+Muted Text / Labels: #7A828E
+
+
+
+----------------------------------------
+
+Neon Pink (CTA): #FF2D6F
+
+Hover Pink: #FF4F87
+
+Soft Pink Glow: rgba(255,45,111,0.4)
+
+
+---------------------------------------
+
+
+Cosmic Blue: #3B82F6
+
+Nebula Purple: #7C3AED
+
+Orbit Cyan (icons): #22D3EE
+
+
+-->
+
+</body>
+</html>

@@ -36,7 +36,7 @@ async function loginUser() {
 
     if (response.status === 200) {
       alert("Login successful 🚀");
-      // window.location.href = "dashboard.html";
+      window.location.href = "Home.html";
     } else {
       alert(data.message || "Invalid credentials");
     }
@@ -72,15 +72,16 @@ async function signupUser() {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        email,
-        password,
-        location
+        email: email,
+        password: password,
+        confirm_password: confirmPassword, // ✅ THIS WAS MISSING
+        location: location
       })
     });
 
     const data = await response.json();
 
-    if (response.status === 200 || response.status === 201) {
+    if (response.ok) {
       alert("Signup successful 🚀");
       window.location.href = "Login.html";
     } else {
