@@ -1,21 +1,56 @@
+
+
+
+// ==========================
+// SIGNUP
+// ==========================
+async function signupUser() {
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value.trim();
+  const confirmPassword = document.getElementById("confirmpassword").value.trim();
+  const location = document.getElementById("location").value.trim();
+
+  if (!email || !password || !confirmPassword || !location) {
+    alert("Please fill all fields");
+    return;
+  }
+
+  if (password !== confirmPassword) {
+    alert("Passwords do not match ❌");
+    return;
+  }
+
+  try {
+    const response = await fetch("http://localhost:5000/signup", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email: email,
+        password: password,
+        confirm_password: confirmPassword,
+        location: location
+      })
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      alert("Signup successful 🚀");
+      window.location.href = "Home.html";
+    } else {
+      alert(data.message || "Signup failed");
+    }
+
+  } catch (error) {
+    console.error(error);
+    alert("Server error");
+  }
+}
+
+
 // ==========================
 // LOGIN
 // ==========================
-document.addEventListener("DOMContentLoaded", () => {
-
-  const loginBtn = document.getElementById("submitbtn");
-
-  if (loginBtn) {
-    loginBtn.addEventListener("click", loginUser);
-  }
-
-  const signupBtn = document.getElementById("submitbtn");
-  if (signupBtn && document.getElementById("confirmpassword")) {
-    signupBtn.addEventListener("click", signupUser);
-  }
-
-});
-
 async function loginUser() {
   const email = document.getElementById("email").value.trim();
   const password = document.getElementById("password").value.trim();
@@ -49,49 +84,25 @@ async function loginUser() {
 
 
 // ==========================
-// SIGNUP
+// EVENT BINDING (FIXED)
 // ==========================
-async function signupUser() {
-  const email = document.getElementById("email").value.trim();
-  const password = document.getElementById("password").value.trim();
-  const confirmPassword = document.getElementById("confirmpassword").value.trim();
-  const location = document.getElementById("location").value.trim();
+document.addEventListener("DOMContentLoaded", () => {
 
-  if (!email || !password || !confirmPassword || !location) {
-    alert("Please fill all fields");
-    return;
+  const btn = document.getElementById("submitbtn");
+  if (!btn) return;
+
+  // Signup page
+  if (document.getElementById("confirmpassword")) {
+    btn.addEventListener("click", signupUser);
+  } 
+  // Login page
+  else {
+    btn.addEventListener("click", loginUser);
   }
 
-  if (password !== confirmPassword) {
-    alert("Passwords do not match ❌");
-    return;
-  }
+});
 
-  try {
-    const response = await fetch("http://localhost:5000/signup", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        email: email,
-        password: password,
-        confirm_password: confirmPassword, // ✅ THIS WAS MISSING
-        location: location
-      })
-    });
 
-    const data = await response.json();
 
-    if (response.ok) {
-      alert("Signup successful 🚀");
-      window.location.href = "Login.html";
-    } else {
-      alert(data.message || "Signup failed");
-    }
-
-  } catch (error) {
-    console.error(error);
-    alert("Server error");
-  }
-}
 
 
