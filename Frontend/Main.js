@@ -69,7 +69,7 @@ async function loginUser() {
 
     const data = await response.json();
 
-    if (response.status === 200) {
+    if (response.status === "success") {
       alert("Login successful 🚀");
       window.location.href = "Home.html";
     } else {
