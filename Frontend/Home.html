@@ -78,18 +78,20 @@
 
     <!-- For Login Or SIGN-UP -->
     <a
-      href="index.html"
-      style="
-        padding: 8px 16px;
-        border-radius: 8px;
-        background-color: #FF2D6F;
-        color: white;
-        text-decoration: none;
-        font-size: 14px;
-      "
-    >
-      Grant Access
-    </a>
+  href="index.html"
+  id="authBtnHeader"
+  style="
+    padding: 8px 16px;
+    border-radius: 8px;
+    background-color: #FF2D6F;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+  "
+>
+  Grant Access
+</a>
+
 
      </div>
 
@@ -741,17 +743,21 @@ when it will happen, and why it matters—so you never miss a moment written in 
     <!-- CTA -->
     <div>
       <h4 style="color:white; margin-bottom:12px;">Stay Updated</h4>
-      <button style="
-        background:#FF2D6F;
-        color:white;
-        border:none;
-        padding:12px 22px;
-        border-radius:10px;
-        cursor:pointer;
-        font-size:14px;
-      ">
-        Grant Access
-      </button>
+      <button
+  id="authBtnFooter"
+  style="
+    background:#FF2D6F;
+    color:white;
+    border:none;
+    padding:12px 22px;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:14px;
+  "
+>
+  Grant Access
+</button>
+
     </div>
 
   </div>
@@ -825,6 +831,50 @@ Orbit Cyan (icons): #22D3EE
 
 
 -->
+
+
+<!-- Script -->
+
+<script>
+const isLoggedIn = localStorage.getItem("isLoggedIn");
+
+const headerBtn = document.getElementById("authBtnHeader");
+const footerBtn = document.getElementById("authBtnFooter");
+
+if (isLoggedIn === "true") {
+  //  Logged in → show Logout
+  if (headerBtn) {
+    headerBtn.innerText = "Logout";
+    headerBtn.href = "#";
+    headerBtn.onclick = logoutUser;
+  }
+
+  if (footerBtn) {
+    footerBtn.innerText = "Logout";
+    footerBtn.onclick = logoutUser;
+  }
+} else {
+  //  Not logged in → show Login
+  if (headerBtn) {
+    headerBtn.innerText = "Grant Access";
+    headerBtn.href = "index.html";
+  }
+
+  if (footerBtn) {
+    footerBtn.innerText = "Grant Access";
+    footerBtn.onclick = () => {
+      window.location.href = "index.html";
+    };
+  }
+}
+
+function logoutUser() {
+  localStorage.removeItem("isLoggedIn");
+  alert("Logged out successfully 👋");
+  window.location.href = "index.html";
+}
+</script>
+
 
 </body>
 </html>

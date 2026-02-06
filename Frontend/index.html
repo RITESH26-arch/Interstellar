@@ -260,7 +260,7 @@ async function loginUser() {
   const email = document.getElementById("email").value.trim();
   const password = document.getElementById("password").value.trim();
 
-  if (!email || !password) {
+  if (!email || !password) { 
     alert("Please enter email and password ❌");
     return;
   }
@@ -281,6 +281,8 @@ async function loginUser() {
 
     if (response.ok) {
       alert("Login successful 🚀");
+      // For Button Toggling
+      localStorage.setItem("isLoggedIn", "true");
       // home page
       window.location.href = "Home.html";
     } else {
