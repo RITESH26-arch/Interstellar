@@ -202,11 +202,6 @@ style="color: #FF2D6F;
 <span style="color:#B6BCC6; text-decoration:none">
     or  
 </span>
-<a href="Login.html" style="color: #B6BCC6; text-decoration:none;">
-  login
-</a>
-
-
 </div> 
 
 
@@ -279,7 +274,7 @@ async function loginUser() {
 
     const data = await response.json();
 
-    if (response.ok) {
+    if (data.status== "success") {
       alert("Login successful 🚀");
       // For Button Toggling
       localStorage.setItem("isLoggedIn", "true");

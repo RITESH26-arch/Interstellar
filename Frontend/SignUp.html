@@ -224,9 +224,9 @@
               box-sizing:border-box;"  
               id="Question"
               placeholder="Select a Question">
-            <option value="School">Waht is your School Name</option>
-            <option value="Movie">What is your Favourite Movie</option>
-            <option value="Food">What is your Favourite Food</option>
+            <option value="1">What is your School Name</option>
+            <option value="2">What is your favourite Movie</option>
+            <option value="3">What is your favourite Food</option>
         </select>
 </div>
 <br>
@@ -259,8 +259,6 @@
   >
 </div>
 
-
-
 <!-- 
 
 SEQUENCE OF THE PAGE
@@ -290,12 +288,13 @@ style="color: #FF2D6F;
        cursor: pointer;">
   Join the Mission
 </button>
-
 <br>
-
 </div>
-<br>
-
+<div>
+  <a href="index.html" style="color: #B6BCC6; text-decoration:none;">
+    login
+  </a>
+</div>
 
 
 
@@ -349,7 +348,8 @@ async function signupUser() {
   const confirmPassword = document.getElementById("confirmpassword").value.trim();
   const location = document.getElementById("location").value.trim();
   const question = document.getElementById("Question").value;
-  const answer = document.getElementById("Answer").value.trim();
+  const answer = document.getElementById("Answer").value;
+
 
   //  Validation
   if (!email || !password || !confirmPassword || !location || !question || !answer) {
@@ -384,11 +384,11 @@ async function signupUser() {
 
     const data = await response.json();
 
-    if (response.ok) {
+    if (data.status == "success") {
       alert("Signup successful 🚀");
       window.location.href = "Home.html";
     } else {
-      alert(data.message || "Signup failed ❌");
+      alert(data.msg || "Signup failed ❌");
     }
 
   } catch (error) {
