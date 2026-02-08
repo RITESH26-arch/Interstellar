@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- Stars Animation -->
+    <div class="stars"></div>
+<div class="shooting-stars">
+  <span></span>
+  <span></span>
+</div>   
+
+
+ <div>
+        <h1 style="text-align: center;
+                 color: white;
+                    ">Interstellar
+        </h1>
+</div>
+  
+<div style="
+  position: relative;
+  height: 55vh;
+  width: 100%;
+  background-image: url('Images/Space-Images/StartingImage.webp');
+  background-size: cover;
+  background-position: center;
+  border-bottom: 1px solid #1E2228;
+  overflow: hidden;
+">
+
+  <!-- Dark Gradient Overlay -->
+  <div style="
+    position:absolute;
+    inset:0;
+    background: linear-gradient(
+      to right,
+      rgba(0,0,0,0.85),
+      rgba(0,0,0,0.45),
+      rgba(0,0,0,0.1)
+    );
+  "></div>
+
+  <!-- CONTENT WRAPPER -->
+  <div style="
+    position:relative;
+    z-index:2;
+    height:100%;
+    display:flex;
+    align-items:center;
+  ">
+
+    <!-- TEXT BLOCK -->
+    <div style="
+      max-width:520px;
+      margin-left:80px;
+      color:white;
+    ">
+
+      <h1 style="
+        font-size:46px;
+        font-weight:700;
+        line-height:1.2;
+        margin-bottom:14px;
+      ">
+        ABOUT INTERSTELLAR
+      </h1>
+
+      <p style="font-size:16px; color:#B6BCC6; line-height:1.6;">
+      Decoding the universe through science, data, and curiosity.
+      We help you witness cosmic events before they happen.
+    </p>
+
+    </div>
+  </div>
+</div>
+
+
+
+<div style="
+  padding:80px 120px;
+  max-width:1200px;
+  margin:auto;
+">
+
+  <h2 style="color:white; font-size:28px; margin-bottom:20px;">
+    Who We Are
+  </h2>
+
+  <p style="color:#7A828E; font-size:16px; line-height:1.7;">
+    Interstellar is a space-focused platform built for explorers,
+    students, and astronomy lovers. We combine real scientific data
+    with modern technology to track and predict rare cosmic events
+    like meteor showers, eclipses, and auroras.
+  </p>
+
+</div>
+
+
+<div style="
+  display:flex;
+  gap:40px;
+  padding:40px 120px;
+">
+
+  <div style="flex:1;">
+    <h3 style="color:white;">🌠 Event Prediction</h3>
+    <p style="color:#7A828E;">
+      Accurate predictions for meteor showers, eclipses,
+      and planetary events.
+    </p>
+  </div>
+
+  <div style="flex:1;">
+    <h3 style="color:white;">📸 Space Imagery</h3>
+    <p style="color:#7A828E;">
+      Curated images of galaxies, auroras, and deep space wonders.
+    </p>
+  </div>
+
+  <div style="flex:1;">
+    <h3 style="color:white;">🔔 Smart Alerts</h3>
+    <p style="color:#7A828E;">
+      Never miss a cosmic event with real-time alerts and updates.
+    </p>
+  </div>
+
+</div>
+
+<div style="
+  padding:80px 120px;
+  border-top:1px solid #1E2228;
+">
+
+  <h2 style="color:white; margin-bottom:20px;">
+    Built By
+  </h2>
+
+  <p style="color:#7A828E; font-size:16px; line-height:1.7;">
+    This project was created as part of a learning journey in
+    full-stack development, combining frontend design,
+    backend logic, and database integration.
+  </p>
+
+  <p style="color:#B6BCC6; margin-top:10px;">
+    — Created by <b style="color:white;"> <br> Ritesh Dongave  <br> Sneha Ghule <br> Ganesh Divse </b>
+  </p>
+
+</div>
+
+
+
+<div style="
+  text-align:center;
+  padding:80px 20px;
+">
+
+  <h2 style="color:white; margin-bottom:16px;">
+    Ready to Explore the Universe?
+  </h2>
+
+  <button 
+  id="authButton"
+  onclick="handleAuth()"
+  style="
+    background:#FF2D6F;
+    color:white;
+    border:none;
+    padding:14px 28px;
+    border-radius:12px;
+    font-size:16px;
+    cursor:pointer;
+  ">
+  Grant Access
+</button>
+
+
+</div>
+
+
+
+
+<script>
+
+  // Check login status when page loads
+  window.onload = function() {
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
+
+    const button = document.getElementById("authButton");
+
+    if (isLoggedIn === "true") {
+      button.innerText = "Leave The Mission";
+    } else {
+      button.innerText = "Grant Access";
+    }
+  };
+
+  function handleAuth() {
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
+
+    if (isLoggedIn === "true") {
+      // Logout logic
+      localStorage.removeItem("isLoggedIn");
+      alert("Left The Misson🚀");
+      window.location.reload();
+    } else {
+      // Redirect to login page
+      window.location.href = "index.html";
+    }
+  }
+
+</script>
+
+    
+</body>
+</html>

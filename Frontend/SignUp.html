@@ -385,7 +385,7 @@ async function signupUser() {
     const data = await response.json();
 
     if (data.status == "success") {
-      alert("Signup successful 🚀");
+      alert("Joined The Mission successfully 🚀");
       window.location.href = "Home.html";
     } else {
       alert(data.msg || "Signup failed ❌");

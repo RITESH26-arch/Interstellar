@@ -840,13 +840,13 @@ const footerBtn = document.getElementById("authBtnFooter");
 if (isLoggedIn === "true") {
   //  Logged in → show Logout
   if (headerBtn) {
-    headerBtn.innerText = "Logout";
+    headerBtn.innerText = "Leave The Mission";
     headerBtn.href = "#";
     headerBtn.onclick = logoutUser;
   }
 
   if (footerBtn) {
-    footerBtn.innerText = "Logout";
+    footerBtn.innerText = "Leave The Mission";
     footerBtn.onclick = logoutUser;
   }
 } else {
@@ -866,7 +866,7 @@ if (isLoggedIn === "true") {
 
 function logoutUser() {
   localStorage.removeItem("isLoggedIn");
-  alert("Logged out successfully 👋");
+  alert("Leaft The Mission👋");
   window.location.href = "index.html";
 }
 </script>
