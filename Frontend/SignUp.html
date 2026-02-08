@@ -7,9 +7,6 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-
-
-
 <body style="background-color: #0b0d10;
              display: flex;
              justify-content: center;
@@ -18,25 +15,12 @@
              margin: 0;
              ">
 
-
-<!-- Background Stars AND ShotingStar -->
+<!-- Background Stars AND ShootingStar -->
 <div class="stars"></div>
 <div class="shooting-stars">
   <span></span>
   <span></span>
-  
 </div>
-
-
-
-
- <!-- Images of Astrounaut and planets ETC-->
-<!-- <img src="Images/sky-starry-black-night-background-with-star-starry-galaxy-space-8bit-texture-in-flat-style.webp"  style="position:fixed;
-                                                              width:100%;
-                                                              opacity:0.5;
-                                                              z-index:0;
-                                                                pointer-events:none;"> -->
-
 
 <div style="
   display:flex;
@@ -45,11 +29,8 @@
   gap:14px;
 ">
 
-
-
 <!-- Login Box -->
-
-  <div style="
+<div style="
   background:#0b0d10; 
   border:2px solid #1E2228;
   min-height: auto;
@@ -65,8 +46,7 @@
           margin-bottom: 14px;">New Astronaut Signing-Up</h2>
 <br>
 
-<!-- Name above the Box -->
-
+<!-- Email -->
 <div style="width:100%; margin-bottom:16px;">
   <label style="
     display:block;
@@ -76,10 +56,6 @@
   ">
     Email Address
   </label>
-
-
-
-<!-- Mail Input -->
 
 <input style=" width:100%;
               padding:12px;
@@ -97,17 +73,8 @@
 </div>
 <br>
 
-
-
 <!-- Password -->
-
-<div style="
-  position:relative;
-  width:100%;
-">
-
-<!-- Name above the Box -->
-
+<div style="position:relative; width:100%;">
 <div style="width:100%; margin-bottom:16px;">
   <label style="
     display:block;
@@ -117,7 +84,6 @@
   ">
     Password
   </label>
-
 
   <input 
     type="password"
@@ -138,9 +104,8 @@
 </div>
 <br>
 
-<div style="position: relative;
-             width:100%;">
-
+<!-- Confirm Password -->
+<div style="position: relative; width:100%;">
   <input 
     type="password"
     id="confirmpassword"
@@ -160,8 +125,7 @@
 
 <br>
 
-<!-- Name above the Box -->
-
+<!-- 🔽 LOCATION DROPDOWN (ONLY CHANGE MADE HERE) -->
 <div style="width:100%; margin-bottom:16px;">
   <label style="
     display:block;
@@ -172,32 +136,31 @@
     Location / City
   </label>
 
-
-
-<!-- City Input -->
-
-<input id="location"
-             style="width:100%;
-              padding:12px;
-              margin-bottom:12px;
-              background:#14171C;
-              border:1px solid #1E2228;
-              border-radius:10px;
-              color:#FFFFFF;             
-              font-size:14px;
-              outline:none;
-              box-sizing:border-box;" 
-              type="text" 
-              placeholder="Enter Your City">
+  <select 
+    id="location"
+    style="width:100%;
+      padding:12px;
+      margin-bottom:12px;
+      background:#14171C;
+      border:1px solid #1E2228;
+      border-radius:10px;
+      color:#FFFFFF;             
+      font-size:14px;
+      outline:none;
+      box-sizing:border-box;">
+      
+    <option value="">-- Select Your City --</option>
+    <option value="Pune">Pune</option>
+    <option value="Mumbai">Mumbai</option>
+    <option value="Delhi">Delhi</option>
+    <option value="Bangalore">Bangalore</option>
+    <option value="Hyderabad">Hyderabad</option>
+  </select>
 </div>
 
 <br>
 
-
-<!-- Security Questions -->
-
-<!-- Name above the Box -->
-
+<!-- Security Question -->
 <div style="width:100%; margin-bottom:16px;">
   <label style="
     display:block;
@@ -207,10 +170,6 @@
   ">
     Select a Security Question
   </label>
-
-
-
-<!-- Drop Down for the  Security Question -->
 
 <select style=" width:100%;
               padding:12px;
@@ -222,16 +181,18 @@
               font-size:14px;
               outline:none;
               box-sizing:border-box;"  
-              id="Question"
-              placeholder="Select a Question">
-            <option value="1">What is your School Name</option>
-            <option value="2">What is your favourite Movie</option>
-            <option value="3">What is your favourite Food</option>
-        </select>
+              id="Question">
+  <option value="">-- Select a Question --</option>
+  <option value="1">What is your School Name</option>
+  <option value="2">What is your favourite Movie</option>
+  <option value="3">What is your favourite Food</option>
+
+</select>
 </div>
+
 <br>
 
-<!-- Answer -->
+<!-- Security Answer -->
 <div style="width:100%; margin-bottom:16px;">
   <label style="
     display:block;
@@ -241,7 +202,6 @@
   ">
     Security Answer
   </label>
-
 
   <input 
     id="Answer"
@@ -259,22 +219,7 @@
   >
 </div>
 
-<!-- 
-
-SEQUENCE OF THE PAGE
-
-[ Enter your Mail ] 
-[ Password ]
-[ Confirm Password ]
-[ Location ]
-[ JOIN THE MISSION BUTTON ]
-
--->
-
-
-
 <!-- Sign-Up button -->
-
 <button 
 id="submitbtn"
 onclick="signupUser()"
@@ -290,57 +235,16 @@ style="color: #FF2D6F;
 </button>
 <br>
 </div>
+
 <div>
   <a href="index.html" style="color: #B6BCC6; text-decoration:none;">
     login
   </a>
 </div>
 
-
-
-<!--
-Deep Space Black: #0B0D10
-
-Pure Black (sections / footer): #000000
-
-Soft Dark Grey (cards): #14171C
-
-
---------------------------------------
-
-Primary Text (Headings): #FFFFFF
-
-Secondary Text: #B6BCC6
-
-Muted Text / Labels: #7A828E
-
-
-
-----------------------------------------
-
-Neon Pink (CTA): #FF2D6F
-
-Hover Pink: #FF4F87
-
-Soft Pink Glow: rgba(255,45,111,0.4)
-
-
----------------------------------------
-
-
-Cosmic Blue: #3B82F6
-
-Nebula Purple: #7C3AED
-
-Orbit Cyan (icons): #22D3EE
-
-
--->
-
 </div>
 
 <!-- Script -->
-
 <script>
 async function signupUser() {
   const email = document.getElementById("email").value.trim();
@@ -348,10 +252,8 @@ async function signupUser() {
   const confirmPassword = document.getElementById("confirmpassword").value.trim();
   const location = document.getElementById("location").value.trim();
   const question = document.getElementById("Question").value;
-  const answer = document.getElementById("Answer").value;
+  const answer = document.getElementById("Answer").value.trim();
 
-
-  //  Validation
   if (!email || !password || !confirmPassword || !location || !question || !answer) {
     alert("Please fill all fields ❌");
     return;
@@ -370,9 +272,7 @@ async function signupUser() {
   try {
     const response = await fetch("http://localhost:5000/signup", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         email: email,
         password: password,
@@ -398,7 +298,6 @@ async function signupUser() {
   }
 }
 </script>
-
 
 </body>
 </html>
