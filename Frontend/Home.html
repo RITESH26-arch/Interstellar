@@ -51,24 +51,24 @@
         align-items: center;
       "
     >
-
-    <a href="home.html" style="color:#B6BCC6; 
+<nav>
+    <a href="home.html" class="nav-link" style="color:#B6BCC6; 
                                 text-decoration:none;
                                 ">Home</a>
 
-      <a href="Events.html" style="color:#B6BCC6; 
+      <a href="Events.html" class="nav-link" style="color:#B6BCC6; 
                                     text-decoration:none;
                                     ">Events</a>
 
-      <a href="Articles.html" style="color:#B6BCC6;
+      <a href="Articles.html" class="nav-link" style="color:#B6BCC6;
                                         text-decoration:none;
                                         ">Articles</a>
 
-      <a href="Images.html" style="color:#B6BCC6; 
+      <a href="Images.html" class="nav-link" style="color:#B6BCC6; 
                                     text-decoration:none;
                                     ">Pictures</a>
 
-      <a href="AboutUs.html" style="color:#B6BCC6; 
+      <a href="AboutUs.html" class="nav-link" style="color:#B6BCC6; 
                                     text-decoration:none;
                                     ">About</a>
 
@@ -76,6 +76,7 @@
     <a
   href="index.html"
   id="authBtnHeader"
+  class="nav-link"
   style="
     padding: 8px 16px;
     border-radius: 8px;
@@ -87,7 +88,7 @@
 >
   Grant Access
 </a>
-
+    </nav>
 
      </div>
 
@@ -866,9 +867,17 @@ if (isLoggedIn === "true") {
 
 function logoutUser() {
   localStorage.removeItem("isLoggedIn");
-  alert("Leaft The Mission👋");
+  alert("Leave The Mission👋");
   window.location.href = "index.html";
 }
+
+const currentPage = window.location.pathname.split("/").pop();
+
+  document.querySelectorAll(".nav-link").forEach(link => {
+    if (link.getAttribute("href") === currentPage) {
+      link.classList.add("active");
+    }
+  });
 </script>
 
 

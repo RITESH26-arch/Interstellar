@@ -386,6 +386,7 @@ async function signupUser() {
 
     if (data.status == "success") {
       alert("Joined The Mission successfully 🚀");
+      localStorage.setItem("isLoggedIn", "true");
       window.location.href = "Home.html";
     } else {
       alert(data.msg || "Signup failed ❌");

@@ -80,3 +80,21 @@
     opacity: 0;
   }
 }  
+
+/* Navigation links */
+.nav-link {
+  color: #ccc;
+  text-decoration: none;
+  padding: 8px 12px;
+  transition: 0.3s;
+}
+
+.nav-link:hover {
+  color: #fff;
+}
+
+.nav-link.active {
+  font-weight: 550;
+  border-bottom: 2px solid #B6BCC6;
+  text-shadow: 0 0 6px rgba(182, 188, 198, 0.6);
+}

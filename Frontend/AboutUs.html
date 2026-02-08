@@ -22,7 +22,81 @@
                     ">Interstellar
         </h1>
 </div>
-  
+
+  <header style="position: sticky;
+                  top: 0;
+                  width: 100%;
+                  background-color: #0B0D10;
+                  border-bottom: 1px solid #1E2228;
+                  z-index: 1000;
+  ">
+
+  <div  style="
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 16px 40px;
+    ">
+
+
+    <div style="color: white; 
+                font-size: 18px;
+                font-weight: 600;
+    ">Explore The Space
+    </div>
+
+    <div
+      style="
+        display: flex;
+        gap: 36px;
+        align-items: center;
+      "
+    >
+    <nav>
+    <a href="home.html" class="nav-link" style="color:#B6BCC6; 
+                                text-decoration:none;
+                                ">Home</a>
+
+      <a href="Events.html" class="nav-link" style="color:#B6BCC6; 
+                                    text-decoration:none;
+                                    ">Events</a>
+
+      <a href="Articles.html" class="nav-link" style="color:#B6BCC6;
+                                        text-decoration:none;
+                                        ">Articles</a>
+
+      <a href="Images.html" class="nav-link" style="color:#B6BCC6; 
+                                    text-decoration:none;
+                                    ">Pictures</a>
+
+      <a href="AboutUs.html" class="nav-link" style="color:#B6BCC6; 
+                                    text-decoration:none;
+                                    ">About</a>
+
+    <!-- For Login Or SIGN-UP -->
+    <a
+  href="index.html"
+  id="authBtnHeader"
+  class="nav-link"
+  style="
+    padding: 8px 16px;
+    border-radius: 8px;
+    background-color: #FF2D6F;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+  "
+>
+  Grant Access
+</a>
+    </nav>
+
+     </div>
+
+    </div>
+    
+  </header>
+  <br>
 <div style="
   position: relative;
   height: 55vh;
@@ -184,7 +258,107 @@
 
 
 </div>
+<!-- FOOTER -->
 
+
+<footer style="
+ 
+  border-top:1px solid #1E2228;
+  padding:50px 80px;
+  color:#B6BCC6;
+">
+
+  <!-- TOP PART -->
+  <div style="
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:40px;
+  ">
+
+    <!-- BRAND -->
+    <div style="max-width:300px;">
+      <h2 style="
+        color:white;
+        font-size:22px;
+        letter-spacing:2px;
+        margin-bottom:14px;
+      ">
+        INTERSTELLAR
+      </h2>
+
+      <p style="
+        font-size:14px;
+        line-height:1.6;
+        color:#7A828E;
+      ">
+        Predicting rare cosmic events and uncovering
+        the universe through science, data, and curiosity.
+      </p>
+    </div>
+
+    <!-- LINKS -->
+    <div>
+      <h4 style="color:white; margin-bottom:12px;">Explore</h4>
+      <a href="home.html" style="display:block; color:#7A828E; margin-bottom:8px; text-decoration:none;">Home</a>
+      <a href="Events.html" style="display:block; color:#7A828E; margin-bottom:8px; text-decoration:none;">Events</a>
+      <a href="#" style="display:block; color:#7A828E; margin-bottom:8px; text-decoration:none;">Predictions</a>
+      <a href="Images.html" style="display:block; color:#7A828E; text-decoration:none;">Images</a>
+    </div>
+
+    <!-- INFO -->
+    <div>
+      <h4 style="color:white; margin-bottom:12px;">Information</h4>
+      <a href="#" style="display:block; color:#7A828E; margin-bottom:8px; text-decoration:none;">About Us</a>
+      <a href="#" style="display:block; color:#7A828E; margin-bottom:8px; text-decoration:none;">Alerts</a>
+      <a href="#" style="display:block; color:#7A828E; text-decoration:none;">Contact</a>
+    </div>
+
+    <!-- CTA -->
+    <div>
+      <h4 style="color:white; margin-bottom:12px;">Stay Updated</h4>
+      <button
+  id="authBtnFooter"
+  style="
+    background:#FF2D6F;
+    color:white;
+    border:none;
+    padding:12px 22px;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:14px;
+  "
+>
+  Grant Access
+</button>
+
+    </div>
+
+  </div>
+
+  <!-- BOTTOM BAR -->
+  <div style="
+    margin-top:40px;
+    padding-top:20px;
+    border-top:1px solid #1E2228;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    font-size:13px;
+    color:#7A828E;
+  ">
+
+    <div>
+      © 2026 Interstellar. All rights reserved.
+    </div>
+
+    <div>
+      Built with ❤️ for the universe
+    </div>
+
+  </div>
+
+</footer>
 
 
 
@@ -193,6 +367,8 @@
   // Check login status when page loads
   window.onload = function() {
     const isLoggedIn = localStorage.getItem("isLoggedIn");
+    const headerBtn = document.getElementById("authBtnHeader");
+    const footerBtn = document.getElementById("authBtnFooter");
 
     const button = document.getElementById("authButton");
 
@@ -217,6 +393,13 @@
     }
   }
 
+  const currentPage = window.location.pathname.split("/").pop();
+
+  document.querySelectorAll(".nav-link").forEach(link => {
+    if (link.getAttribute("href") === currentPage) {
+      link.classList.add("active");
+    }
+  });
 </script>
 
     

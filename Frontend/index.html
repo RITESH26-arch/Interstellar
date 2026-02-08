@@ -278,7 +278,7 @@ async function loginUser() {
       // home page
       window.location.href = "Home.html";
     } else {
-      alert(data.message || "Invalid email or password ❌");
+      alert(data.msg || "Invalid email or password ❌");
     }
 
   } catch (error) {
