@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 30, 2026 at 06:15 PM
+-- Generation Time: Feb 08, 2026 at 05:37 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -65,6 +65,26 @@ CREATE TABLE `predictions` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `security_questions`
+--
+
+CREATE TABLE `security_questions` (
+  `id` int(11) NOT NULL,
+  `question` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `security_questions`
+--
+
+INSERT INTO `security_questions` (`id`, `question`) VALUES
+(1, 'What is your School Name'),
+(2, 'What is your favourite Movie'),
+(3, 'What is your favourite Food');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -75,6 +95,13 @@ CREATE TABLE `users` (
   `password` varchar(255) NOT NULL,
   `location` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`user_id`, `username`, `email`, `password`, `location`) VALUES
+(1, 'sneha@gmail.com', 'sneha@gmail.com', '59b6bc9484a2c8ea7c20a3c0778088295e6f8e62a6a90b6d535b3b6bceb2fcd0', 'pune');
 
 -- --------------------------------------------------------
 
@@ -88,6 +115,26 @@ CREATE TABLE `user_events` (
   `event_id` int(11) DEFAULT NULL,
   `visibility` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_security`
+--
+
+CREATE TABLE `user_security` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `question_id` int(11) NOT NULL,
+  `answer` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `user_security`
+--
+
+INSERT INTO `user_security` (`id`, `user_id`, `question_id`, `answer`) VALUES
+(1, 1, 2, 'f2e5d762060797916b7d886ca149b16e14117f8553d5bab5487d5ed5a8fabb81');
 
 --
 -- Indexes for dumped tables
@@ -116,6 +163,12 @@ ALTER TABLE `predictions`
   ADD KEY `event_id` (`event_id`);
 
 --
+-- Indexes for table `security_questions`
+--
+ALTER TABLE `security_questions`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -130,6 +183,14 @@ ALTER TABLE `user_events`
   ADD PRIMARY KEY (`ue_id`),
   ADD KEY `user_id` (`user_id`),
   ADD KEY `event_id` (`event_id`);
+
+--
+-- Indexes for table `user_security`
+--
+ALTER TABLE `user_security`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `question_id` (`question_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -154,16 +215,28 @@ ALTER TABLE `predictions`
   MODIFY `prediction_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `security_questions`
+--
+ALTER TABLE `security_questions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `user_events`
 --
 ALTER TABLE `user_events`
   MODIFY `ue_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `user_security`
+--
+ALTER TABLE `user_security`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
@@ -189,6 +262,13 @@ ALTER TABLE `predictions`
 ALTER TABLE `user_events`
   ADD CONSTRAINT `user_events_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`),
   ADD CONSTRAINT `user_events_ibfk_2` FOREIGN KEY (`event_id`) REFERENCES `events` (`event_id`);
+
+--
+-- Constraints for table `user_security`
+--
+ALTER TABLE `user_security`
+  ADD CONSTRAINT `user_security_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`),
+  ADD CONSTRAINT `user_security_ibfk_2` FOREIGN KEY (`question_id`) REFERENCES `security_questions` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
