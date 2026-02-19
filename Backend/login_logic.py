@@ -1,8 +1,15 @@
 import re, hashlib, uuid
 from Backend.db_config import get_connection
+from Backend.authenticate import otp_validation
 import mysql.connector
 
 sessions = {}
+
+# def verify_user_otp(email, otp):
+#     if otp_validation(email, otp):
+#         return {"status": "success"}
+#     else:
+#         return {"status": "fail", "msg": "Invalid OTP"}
 
 def validate_email(email):
     return re.match(r'^[\w\.-]+@[\w\.-]+\.\w+$', email)
@@ -31,10 +38,7 @@ def register_user(name, email, password, location, question_id, answer):
         user_id = cur.lastrowid
 
         cur.execute(
-            """
-            INSERT INTO user_security (user_id, question_id, answer)
-            VALUES (%s, %s, %s)
-            """,
+            "INSERT INTO user_security (user_id, question_id, answer) VALUES (%s, %s, %s)",
             (user_id, question_id, hash_password(answer))
         )
 
@@ -65,7 +69,6 @@ def login_user(email, password):
     if not user:
         conn.close()
         return {"status":"fail","msg":"User not found"}
-
     if  not verify_password(password,user[1]):
         conn.close()
         return {"status":"fail","msg":"Wrong password"}
@@ -75,7 +78,7 @@ def login_user(email, password):
     conn.close()
 
     return {"status":"success","token":token}
-
+    
 #Fetching security question
 
 def get_security_question_by_email(email):
@@ -133,21 +136,35 @@ def reset_password_logic(email, new_password):
     cur = conn.cursor()
 
     try:
+        cur.execute("SELECT password FROM users WHERE email=%s", (email,))
+        row = cur.fetchone()
+
+        if not row:
+            return {"status": "fail", "msg": "Could not find."}
+
+        old_hashed_password = row[0]
+        if verify_password(new_password,old_hashed_password):
+            return {"status": "fail", "msg": "Password should be different than previously used ones."}
+
+
         cur.execute(
             "UPDATE users SET password = %s WHERE email = %s",
             (hash_password(new_password), email)
         )
+        conn.commit()
 
         if cur.rowcount == 0:
             return {"status": "fail", "msg": "Email not found"}
 
-        conn.commit()
         return {"status": "success", "msg": "Password updated"}
 
     except Exception as e:
         conn.rollback()
-        return {"status": "fail", "msg": str(e)}
+        print("DB Error:", e)  # log to console
+        return {"status": "fail", "msg": "Database error occurred"}
 
     finally:
+        cur.close()
         conn.close()
+
 

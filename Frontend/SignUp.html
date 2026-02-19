@@ -12,143 +12,109 @@
              justify-content: center;
              align-items: center;
              min-height: 100vh;
-             margin: 0;
-             ">
+             margin: 0;">
 
-<!-- Background Stars AND ShootingStar -->
 <div class="stars"></div>
 <div class="shooting-stars">
   <span></span>
   <span></span>
 </div>
 
-<div style="
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:14px;
-">
+<div style="display:flex;flex-direction:column;align-items:center;gap:14px;">
 
-<!-- Login Box -->
-<div style="
-  background:#0b0d10; 
+<div style="background:#0b0d10; 
   border:2px solid #1E2228;
-  min-height: auto;
   width:300px;
-  padding: 24px;
+  padding:24px;
   border-radius:16px;
   display:flex;
-  flex-direction: column;
-  justify-content:center;
-  align-items:center;
-">
-<h2 style="color:white; 
-          margin-bottom: 14px;">New Astronaut Signing-Up</h2>
-<br>
+  flex-direction:column;
+  align-items:center;">
 
-<!-- Email -->
-<div style="width:100%; margin-bottom:16px;">
-  <label style="
-    display:block;
-    color:#9AA4B2;
-    font-size:13px;
-    margin-bottom:6px;
-  ">
-    Email Address
-  </label>
+<h2 id="formTitle" style="color:white; margin-bottom: 14px;">New Astronaut Signing-Up</h2>
 
-<input style=" width:100%;
-              padding:12px;
-              margin-bottom:12px;
-              background:#14171C;
-              border:1px solid #1E2228;
-              border-radius:10px;
-              color:#FFFFFF;             
-              font-size:14px;
-              outline:none;
-              box-sizing:border-box;" 
-              type="email" 
-              id="email"
-              placeholder="Astrount@gmail.com">
-</div>
-<br>
+<!-- MESSAGE BOX -->
+<div id="msgBox" style="width:100%;margin-bottom:15px;text-align:center;font-size:14px;font-weight:500;display:none;"></div>
 
-<!-- Password -->
-<div style="position:relative; width:100%;">
-<div style="width:100%; margin-bottom:16px;">
-  <label style="
-    display:block;
-    color:#9AA4B2;
-    font-size:13px;
-    margin-bottom:6px;
-  ">
-    Password
-  </label>
+<!-- STEP 1 EMAIL -->
+<div id="step1" style="width: 100%;">
 
-  <input 
-    type="password"
-    id="password"
-    placeholder="Enter Your Password"
-    style="
-      width:100%;
-      padding:12px 42px 12px 12px;
-      background:#14171C;
-      border:1px solid #1E2228;
-      border-radius:8px;
-      color:white;
-      font-size:14px;
-      box-sizing: border-box;
-    "
-  >
-</div>
-</div>
-<br>
+  <div style="width:100%; margin-bottom:16px;">
+    <label style="display:block;color:#9AA4B2;font-size:13px;margin-bottom:6px;">
+      Email Address
+    </label>
 
-<!-- Confirm Password -->
-<div style="position: relative; width:100%;">
-  <input 
-    type="password"
-    id="confirmpassword"
-    placeholder="Confirm Password"
-    style="
-      width:100%;
-      padding:12px 42px 12px 12px;
-      background:#14171C;
-      border:1px solid #1E2228;
-      border-radius:8px;
-      color:white;
-      font-size:14px;
-      box-sizing: border-box;
-    "
-  >
+    <input style=" width:100%;
+                  padding:12px;
+                  margin-bottom:12px;
+                  background:#14171C;
+                  border:1px solid #1E2228;
+                  border-radius:10px;
+                  color:#FFFFFF;             
+                  font-size:14px;
+                  outline:none;
+                  box-sizing:border-box;" 
+                  type="email" 
+                  id="email"
+                  placeholder="Astrount@gmail.com">
+  </div>
+
+  <button onclick="proceedToOTP()"
+    style="color:#FF2D6F;width:100%;height:46px;border-radius:10px;border:none;font-size:14px;background-color:#ffff;cursor:pointer;">
+    Send OTP
+  </button>
+
 </div>
 
-<br>
+<!-- STEP 2 OTP -->
+<div id="step2" style="width: 100%; display: none;">
 
-<!-- 🔽 LOCATION DROPDOWN (ONLY CHANGE MADE HERE) -->
-<div style="width:100%; margin-bottom:16px;">
-  <label style="
-    display:block;
-    color:#9AA4B2;
-    font-size:13px;
-    margin-bottom:6px;
-  ">
-    Location / City
-  </label>
+  <div style="text-align:center;margin-bottom:20px;">
+    <p style="color:#9AA4B2;font-size:14px;">
+      We've sent a verification code to<br>
+      <span id="emailDisplay" style="color:white;font-weight:bold;"></span>
+    </p>
+  </div>
 
-  <select 
-    id="location"
-    style="width:100%;
-      padding:12px;
-      margin-bottom:12px;
-      background:#14171C;
-      border:1px solid #1E2228;
-      border-radius:10px;
-      color:#FFFFFF;             
-      font-size:14px;
-      outline:none;
-      box-sizing:border-box;">
-      
+  <div style="width:100%; margin-bottom:16px;">
+    <label style="display:block;color:#9AA4B2;font-size:13px;margin-bottom:6px;">
+      Enter OTP
+    </label>
+
+    <input 
+      type="text"
+      id="otpInput"
+      placeholder="Enter 6-digit OTP"
+      maxlength="6"
+      style="width:100%;padding:12px;background:#14171C;border:1px solid #1E2228;border-radius:8px;color:white;font-size:14px;text-align:center;letter-spacing:2px;box-sizing:border-box;">
+  </div>
+
+  <button onclick="verifyOTP()"
+    style="color:#FF2D6F;width:100%;height:46px;border-radius:10px;border:none;font-size:14px;background-color:#ffff;cursor:pointer;margin-bottom:10px;">
+    Verify OTP
+  </button>
+
+  <button onclick="resendOTP()"
+    style="color:#9AA4B2;width:100%;height:36px;border-radius:8px;border:1px solid #1E2228;font-size:12px;background-color:transparent;cursor:pointer;">
+    Resend OTP
+  </button>
+
+</div>
+
+<!-- STEP 3 REST FORM -->
+<div id="step3" style="width: 100%; display: none;">
+
+  <!-- Password -->
+  <input type="password" id="password" placeholder="Enter Your Password"
+    style="width:100%;padding:12px 42px 12px 12px;background:#14171C;border:1px solid #1E2228;border-radius:8px;color:white;font-size:14px;box-sizing:border-box;margin-bottom:12px;">
+
+  <!-- Confirm Password -->
+  <input type="password" id="confirmpassword" placeholder="Confirm Password"
+    style="width:100%;padding:12px 42px 12px 12px;background:#14171C;border:1px solid #1E2228;border-radius:8px;color:white;font-size:14px;box-sizing:border-box;margin-bottom:12px;">
+
+  <!-- Location -->
+  <select id="location"
+    style="width:100%;padding:12px;margin-bottom:12px;background:#14171C;border:1px solid #1E2228;border-radius:10px;color:#FFFFFF;font-size:14px;outline:none;box-sizing:border-box;">
     <option value="">-- Select Your City --</option>
     <option value="Pune">Pune</option>
     <option value="Mumbai">Mumbai</option>
@@ -156,148 +122,163 @@
     <option value="Bangalore">Bangalore</option>
     <option value="Hyderabad">Hyderabad</option>
   </select>
-</div>
 
-<br>
+  <!-- Question -->
+  <select id="Question"
+    style="width:100%;padding:12px;margin-bottom:12px;background:#14171C;border:1px solid #1E2228;border-radius:10px;color:#FFFFFF;font-size:14px;outline:none;box-sizing:border-box;">
+    <option value="">-- Select a Question --</option>
+    <option value="1">What is your School Name</option>
+    <option value="2">What is your favourite Movie</option>
+    <option value="3">What is your favourite Food</option>
+  </select>
 
-<!-- Security Question -->
-<div style="width:100%; margin-bottom:16px;">
-  <label style="
-    display:block;
-    color:#9AA4B2;
-    font-size:13px;
-    margin-bottom:6px;
-  ">
-    Select a Security Question
-  </label>
+  <!-- Answer -->
+  <input id="Answer" placeholder="Enter Your Answer"
+    style="width:100%;padding:12px;background:#14171C;border:1px solid #1E2228;border-radius:8px;color:white;font-size:14px;box-sizing:border-box;margin-bottom:12px;">
 
-<select style=" width:100%;
-              padding:12px;
-              margin-bottom:12px;
-              background:#14171C;
-              border:1px solid #1E2228;
-              border-radius:10px;
-              color:#FFFFFF;             
-              font-size:14px;
-              outline:none;
-              box-sizing:border-box;"  
-              id="Question">
-  <option value="">-- Select a Question --</option>
-  <option value="1">What is your School Name</option>
-  <option value="2">What is your favourite Movie</option>
-  <option value="3">What is your favourite Food</option>
+  <button onclick="signupUser()"
+    style="color:#FF2D6F;width:100%;height:46px;border-radius:10px;border:none;font-size:14px;background-color:#ffff;cursor:pointer;">
+    Join the Mission
+  </button>
 
-</select>
-</div>
-
-<br>
-
-<!-- Security Answer -->
-<div style="width:100%; margin-bottom:16px;">
-  <label style="
-    display:block;
-    color:#9AA4B2;
-    font-size:13px;
-    margin-bottom:6px;
-  ">
-    Security Answer
-  </label>
-
-  <input 
-    id="Answer"
-    placeholder="Enter Your Answer"
-    style="
-      width:100%;
-      padding:12px 42px 12px 12px;
-      background:#14171C;
-      border:1px solid #1E2228;
-      border-radius:8px;
-      color:white;
-      font-size:14px;
-      box-sizing: border-box;
-    "
-  >
-</div>
-
-<!-- Sign-Up button -->
-<button 
-id="submitbtn"
-onclick="signupUser()"
-style="color: #FF2D6F; 
-       width: 100%;
-       height: 46px;
-       border-radius: 10px;
-       border: none;
-       font-size: 14px;
-       background-color:#ffff;
-       cursor: pointer;">
-  Join the Mission
-</button>
-<br>
-</div>
-
-<div>
-  <a href="index.html" style="color: #B6BCC6; text-decoration:none;">
-    login
-  </a>
 </div>
 
 </div>
 
-<!-- Script -->
+<a href="index.html" style="color:#B6BCC6;text-decoration:none;">login</a>
+
+</div>
+
 <script>
-async function signupUser() {
+
+let userData = {};
+
+function showMsg(text, color){
+  const box = document.getElementById("msgBox");
+  box.style.display = "block";
+  box.style.color = color;
+  box.innerText = text;
+}
+
+function showStep(step){
+  document.getElementById("step1").style.display = "none";
+  document.getElementById("step2").style.display = "none";
+  document.getElementById("step3").style.display = "none";
+  document.getElementById("msgBox").style.display = "none";
+
+  document.getElementById("step" + step).style.display = "block";
+}
+
+async function proceedToOTP(){
+  alert("clicked");
+
   const email = document.getElementById("email").value.trim();
-  const password = document.getElementById("password").value.trim();
-  const confirmPassword = document.getElementById("confirmpassword").value.trim();
-  const location = document.getElementById("location").value.trim();
-  const question = document.getElementById("Question").value;
-  const answer = document.getElementById("Answer").value.trim();
 
-  if (!email || !password || !confirmPassword || !location || !question || !answer) {
-    alert("Please fill all fields ❌");
+  if(!email){
+    showMsg("Please enter email ❌","red");
     return;
   }
 
-  if (password !== confirmPassword) {
-    alert("Passwords do not match ❌");
-    return;
-  }
+  userData.email = email;
+  userData.action = "signup";
 
-  if (password.length < 6) {
-    alert("Password must be at least 6 characters long");
-    return;
-  }
+  const res = await fetch("http://127.0.0.1:5000/send-otp", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      email: email,
+      action: "signup"
+    })
+  });
 
-  try {
-    const response = await fetch("http://localhost:5000/signup", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        email: email,
-        password: password,
-        location: location,
-        security_question: question,
-        security_answer: answer
-      })
-    });
+  const data = await res.json();
 
-    const data = await response.json();
+  if(data.status === "success"){
+    showStep(2);
 
-    if (data.status == "success") {
-      alert("Joined The Mission successfully 🚀");
-      localStorage.setItem("isLoggedIn", "true");
-      window.location.href = "Home.html";
-    } else {
-      alert(data.msg || "Signup failed ❌");
-    }
+    document.getElementById("emailDisplay").innerText = email;
 
-  } catch (error) {
-    console.error(error);
-    alert("Server error, try again later");
+    showMsg("OTP sent successfully 📧","green");
+  } else {
+    showMsg(data.msg,"red");
   }
 }
+
+async function verifyOTP(){
+  const otp = document.getElementById("otpInput").value.trim();
+
+  if(otp.length != 6){
+    showMsg("Invalid OTP ❌","red");
+    return;
+  }
+
+  const res = await fetch("http://127.0.0.1:5000/verify-otp",{
+    method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body:JSON.stringify({
+      email: userData.email,
+      action: userData.action,
+      otp: otp
+    })
+  });
+
+  const data = await res.json();
+
+  if(data.status === "success"){
+    showStep(3);
+    showMsg("Email verified ✅","green");
+  } else {
+    showMsg(data.msg,"red");
+  }
+}
+
+function resendOTP(){
+  proceedToOTP();
+}
+
+async function signupUser(){
+
+  const password = document.getElementById("password").value.trim();
+  const confirm = document.getElementById("confirmpassword").value.trim();
+  const location = document.getElementById("location").value;
+  const q = document.getElementById("Question").value;
+  const ans = document.getElementById("Answer").value.trim();
+
+  if(!password || !confirm || !location || !q || !ans){
+    showMsg("Please fill all fields ❌","red");
+    return;
+  }
+
+  if(password !== confirm){
+    showMsg("Passwords do not match ❌","red");
+    return;
+  }
+
+  const res = await fetch("http://127.0.0.1:5000/signup",{
+    method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body:JSON.stringify({
+      email: userData.email,
+      password: password,
+      location: location,
+      security_question: q,
+      security_answer: ans
+    })
+  });
+
+  const data = await res.json();
+
+  if(data.status === "success"){
+    showMsg("Signup successful 🚀","green");
+    localStorage.setItem("isLoggedIn", "true");
+    window.location.href = "Home.html";
+  } else {
+    showMsg(data.msg,"red");
+  }
+}
+
 </script>
+
 
 </body>
 </html>
