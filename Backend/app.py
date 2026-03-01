@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+import mysql.connector
 
 from Backend.login_logic import (
     register_user,
@@ -160,9 +161,38 @@ def forgot_password_reset():
         return jsonify({"status": "fail", "msg": "Server error"}), 500
 
 
+
+
+# -------------------------
+# EVENTS API
+# -------------------------
+@app.route("/Events", methods=["GET"])
+def get_events():
+
+    conn = mysql.connector.connect(
+        host="localhost",
+        user="root",
+        password="",   # agar password hai to yaha daal
+        database="interstellar_database"
+    )
+
+    cursor = conn.cursor(dictionary=True)
+
+    cursor.execute("""
+        SELECT event_id, ename, etype, description, event_date, frequency
+        FROM events
+        ORDER BY event_date ASC
+    """)
+
+    events = cursor.fetchall()
+
+    cursor.close()
+    conn.close()
+
+    return jsonify(events)
+
 # -------------------------
 # RUN SERVER
 # -------------------------
 if __name__ == "__main__":
     app.run(debug=True, use_reloader=False)
-
