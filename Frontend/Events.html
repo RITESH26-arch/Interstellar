@@ -245,7 +245,7 @@ fetch("http://127.0.0.1:5000/events")
       data.forEach(event => {
 
           const extra = extraData.find(e => e.event_id === event.event_id);
-          const imagePath = extra ? "images/" + extra.image : "";
+          const imagePath = extra ? extra.img : "";
 
           const card = document.createElement("div");
 
@@ -286,7 +286,7 @@ fetch("http://127.0.0.1:5000/events")
           container.appendChild(card);
       });
 
-  });
+  }); 
 
 function openModal(event) {
 
@@ -296,14 +296,15 @@ function openModal(event) {
     document.getElementById("modal-type").innerText = event.etype;
     document.getElementById("modal-date").innerText = "Date: " + event.event_date;
     document.getElementById("modal-frequency").innerText = "Frequency: " + event.frequency;
+    document.getElementById("modal-image").src = extra.img;
 
     if (extra) {
-        document.getElementById("modal-desc").innerText = extra.article || "No article.";
-        document.getElementById("modal-image").src = "images/" + extra.image;
-    } else {
-        document.getElementById("modal-desc").innerText = "No matching article found.";
-        document.getElementById("modal-image").src = "";
-    }
+    document.getElementById("modal-desc").innerText = extra.article || "No article.";
+    document.getElementById("modal-image").src = extra.img;
+} else {
+    document.getElementById("modal-desc").innerText = "No matching article found.";
+    document.getElementById("modal-image").src = "";
+}
 
     document.getElementById("modal").style.display = "flex";
 }
