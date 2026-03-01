@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import mysql.connector
-
+from Backend.db_config import get_connection
 from Backend.login_logic import (
     register_user,
     login_user,
@@ -14,6 +14,11 @@ from Backend.login_logic import (
 from Backend.authenticate import send_valid_email, otp_validation
 
 from flask import send_from_directory
+from apscheduler.schedulers.background import BackgroundScheduler
+from Backend.notification import check_and_send_notifications
+
+#manual running for notifcation 
+from Backend.notification import check_and_send_notifications
 
 app = Flask(__name__, static_folder="../Frontend", static_url_path="")
 CORS(app)
@@ -163,33 +168,32 @@ def forgot_password_reset():
 
 
 
-# -------------------------
-# EVENTS API
-# -------------------------
-@app.route("/Events", methods=["GET"])
+
+@app.route("/events", methods=["GET"])
 def get_events():
+    conn = get_connection()   # your db_config connection
+    cursor = conn.cursor(dictionary=True)   # IMPORTANT
 
-    conn = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="",   # agar password hai to yaha daal
-        database="interstellar_database"
-    )
-
-    cursor = conn.cursor(dictionary=True)
-
-    cursor.execute("""
-        SELECT event_id, ename, etype, description, event_date, frequency
-        FROM events
-        ORDER BY event_date ASC
-    """)
-
+    cursor.execute("SELECT event_id, ename, etype, description, event_date, frequency FROM events")
     events = cursor.fetchall()
 
     cursor.close()
     conn.close()
 
     return jsonify(events)
+
+# -------------------------
+# EVENTS NOTIFICATION
+# -------------------------
+scheduler = BackgroundScheduler()
+scheduler.add_job(check_and_send_notifications, "interval", hours=1)
+scheduler.start()
+
+#Manual running (http://127.0.0.1:5000/run-notifications     do this in browser)
+@app.route("/run-notifications")
+def run_notifications():
+    check_and_send_notifications()
+    return "Notifications processed"
 
 # -------------------------
 # RUN SERVER

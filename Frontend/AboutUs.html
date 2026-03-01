@@ -376,9 +376,15 @@ if (isLoggedIn === "true") {
 }
 
 function logoutUser() {
-  localStorage.removeItem("isLoggedIn");
-  alert("Leave The Mission👋");
-  window.location.href = "index.html";
+
+  const confirmLogout = confirm("Are you sure you want to leave the mission? 🚀");
+
+  if (confirmLogout) {
+    localStorage.removeItem("isLoggedIn");
+    alert("Mission Ended 👋");
+    window.location.href = "index.html";
+  } 
+  // If Cancel is clicked → nothing happens
 }
 
 const currentPage = window.location.pathname.split("/").pop();
