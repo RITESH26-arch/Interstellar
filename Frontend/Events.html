@@ -277,7 +277,9 @@ fetch("http://127.0.0.1:5000/events")
               <div>
                   <h3 style="margin:0;color:#FFFFFF;">${event.ename}</h3>
                   <p style="color:#22D3EE;font-size:14px;">${event.etype}</p>
-                  <p style="color:#B6BCC6;font-size:13px;">Date: ${event.event_date}</p>
+                  <p style="color:#B6BCC6;font-size:13px;">
+  Date: ${new Date(event.event_date).toDateString()}
+</p>
                   <p style="color:#7A828E;font-size:13px;">Frequency: ${event.frequency}</p>
               </div>
           `;
@@ -294,7 +296,8 @@ function openModal(event) {
 
     document.getElementById("modal-title").innerText = event.ename;
     document.getElementById("modal-type").innerText = event.etype;
-    document.getElementById("modal-date").innerText = "Date: " + event.event_date;
+    document.getElementById("modal-date").innerText =
+  "Date: " + new Date(event.event_date).toDateString(); 
     document.getElementById("modal-frequency").innerText = "Frequency: " + event.frequency;
     document.getElementById("modal-image").src = extra.img;
 
