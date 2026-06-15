@@ -21,6 +21,7 @@ Type: {event['etype']}
 Date: {event['event_date']}
 Description: {event['description']}
 
+Check out the details on our Page!
 Don't miss it! 🌙✨
 
 Regards,
