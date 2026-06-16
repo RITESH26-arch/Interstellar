@@ -2,8 +2,9 @@ import mysql.connector
 
 def get_connection():
     return mysql.connector.connect(
-    host="localhost",
-    user="root",
-    password="",
-    database="interstellar_database"
+        host="thomas.proxy.rlwy.net",
+        user="root",
+        password="iySoXjLudJRRJpBQzFKVCDHeruqhPzuv",
+        port=23368,
+        database="railway"
     )
