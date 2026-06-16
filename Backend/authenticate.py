@@ -35,20 +35,17 @@ This OTP is valid for 5 minutes.
 
     try:
         print("STEP 1")
-        server = smtplib.SMTP("smtp.gmail.com", 587, timeout=10)
+        server = smtplib.SMTP_SSL("smtp.gmail.com", 465, timeout=10)
 
         print("STEP 2")
-        server.starttls()
-
-        print("STEP 3")
         server.login(our_email, password)
 
-        print("STEP 4")
+        print("STEP 3")
         server.send_message(msg)
 
-        print("STEP 5")
+        print("STEP 4")
         server.quit()
-
+    
         return True
 
     except Exception as e:
