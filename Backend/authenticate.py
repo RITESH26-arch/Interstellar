@@ -33,13 +33,27 @@ This OTP is valid for 5 minutes.
     msg["From"] = our_email
     msg["To"] = user_email
 
-    server = smtplib.SMTP("smtp.gmail.com", 587)
-    server.starttls()
-    server.login(our_email, password)
-    server.send_message(msg)
-    server.quit()
+    try:
+        print("STEP 1")
+        server = smtplib.SMTP("smtp.gmail.com", 587, timeout=10)
 
-    return True
+        print("STEP 2")
+        server.starttls()
+
+        print("STEP 3")
+        server.login(our_email, password)
+
+        print("STEP 4")
+        server.send_message(msg)
+
+        print("STEP 5")
+        server.quit()
+
+        return True
+
+    except Exception as e:
+        print("SMTP ERROR:", str(e))
+        raise
 
 
 def otp_validation(user_email, action, user_otp):
