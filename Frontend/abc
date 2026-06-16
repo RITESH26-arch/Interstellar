@@ -133,7 +133,7 @@ fetch("events.json")
 // =============================
 // 2️⃣ LOAD EVENTS FROM BACKEND
 // =============================
-fetch("http://127.0.0.1:5000/events")
+fetch("/events")
   .then(res => {
       if (!res.ok) {
           throw new Error("Failed to load backend events");
