@@ -1,33 +1,28 @@
 import smtplib
 from email.mime.text import MIMEText
 import random
+import os
 from datetime import datetime, timedelta
 
-# Store OTPs here temporarily
 otp_storage = {}
 
 def send_valid_email(user_email, action):
-
     otp = str(random.randint(100000, 999999))
-
     otp_storage[user_email] = {
         "otp": otp,
         "time": datetime.now(),
         "action": action
     }
-
-    our_email = "snehasmtptest1@gmail.com"
-    password = "kezkduckvjgdiuoj"
-
+    
+    our_email = os.environ.get("GMAIL_USER")
+    password = os.environ.get("GMAIL_PASSWORD")
+    
     body = f"""Welcome to Interstellar!
 This is your OTP for {action}.
 Please do not share with anyone.
-
 {otp}
-
 This OTP is valid for 5 minutes.
 """
-
     msg = MIMEText(body, "plain")
     msg["Subject"] = f"Interstellar OTP for {action}"
     msg["From"] = our_email
@@ -35,19 +30,16 @@ This OTP is valid for 5 minutes.
 
     try:
         print("STEP 1")
-        server = smtplib.SMTP_SSL("smtp.gmail.com", 465, timeout=10)
-
+        server = smtplib.SMTP("smtp.gmail.com", 587, timeout=10)
         print("STEP 2")
-        server.login(our_email, password)
-
+        server.starttls()
         print("STEP 3")
-        server.send_message(msg)
-
+        server.login(our_email, password)
         print("STEP 4")
+        server.send_message(msg)
+        print("STEP 5")
         server.quit()
-    
         return True
-
     except Exception as e:
         print("SMTP ERROR:", str(e))
         raise
